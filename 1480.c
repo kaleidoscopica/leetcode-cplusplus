@@ -7,21 +7,18 @@ class Solution
 public:
     vector<int> runningSum(vector<int>& nums) 
     {
+        int total = 0;
         vector<int> runningSum;
         int size = nums.size();
-        int start = 0;
         
         for (int i=0; i < size; i++)
         {
-            for (start; start < size; start++)
+            total = 0;   // reset total to 0 for the inner loop
+            for (int j=0; j <= i; j++)
             {
-                int new_entry = nums.at(i);
-                if (i > 0)
-                {
-                    new_entry += nums.at(i-1);
-                }
-                runningSum.push_back(new_entry);
+                total += nums[j];
             }
+            runningSum.push_back(total);
         }
         
         return runningSum;
